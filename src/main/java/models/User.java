@@ -1,3 +1,8 @@
+package models;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -13,21 +18,22 @@ public class User {
     private String phone_number;
     private String password;
     private String username;
-    @OneToOne
+    @OneToOne (cascade = CascadeType.PERSIST)
     @JoinColumn(name = "id_city")
     private City city;
-    @OneToMany(cascade = CascadeType.PERSIST)
-    private Collection<Orders> orders = new ArrayList<Orders>();
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user",cascade = CascadeType.PERSIST)
+    @Fetch(value = FetchMode.SUBSELECT)
+    private Collection<Booking> bookings = new ArrayList<Booking>();
 
     public User() {
     }
 
-    public User(String phone_number, String password, String username, City city, Collection<Orders> orders) {
+    public User(String phone_number, String password, String username, City city, Collection<Booking> bookings) {
         this.phone_number = phone_number;
         this.password = password;
         this.username = username;
         this.city = city;
-        this.orders = orders;
+        this.bookings = bookings;
     }
 
     public int getId_user() {
@@ -70,25 +76,25 @@ public class User {
         this.city = city;
     }
 
-    public Collection<Orders> getOrders() {
-        return orders;
+    public Collection<Booking> getBookings() {
+        return bookings;
     }
 
-    public void setOrders(Collection<Orders> orders) {
-        this.orders = orders;
+    public void setBookings(Collection<Booking> bookings) {
+        this.bookings = bookings;
     }
 
 
 
     @Override
     public String toString() {
-        return "User{" +
+        return "models.User{" +
                 "id_user=" + id_user +
                 ", phone_number='" + phone_number + '\'' +
                 ", password='" + password + '\'' +
                 ", username='" + username + '\'' +
                 ", city=" + city +
-                ", orders=" + orders +
+                ", bookings=" + bookings +
                 '}';
     }
 }

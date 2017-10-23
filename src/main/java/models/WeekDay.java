@@ -1,3 +1,5 @@
+package models;
+
 import javax.persistence.*;
 
 /**
@@ -10,8 +12,8 @@ public class WeekDay {
     private int id_day;
     private String name;
     @ManyToOne
-    @JoinColumn(name = "id_order")
-    private Orders orders;
+    @JoinColumn(name = "id_booking")
+    private Booking booking;
 
     public WeekDay() {
     }
@@ -36,17 +38,17 @@ public class WeekDay {
         this.name = name;
     }
 
-    public Orders getOrders() {
-        return orders;
+    public Booking getBooking() {
+        return booking;
     }
 
-    public void setOrders(Orders orders) {
-        this.orders = orders;
+    public void setBooking(Booking booking) {
+        this.booking = booking;
     }
 
     @Override
     public String toString() {
-        return "WeekDay{" +
+        return "models.WeekDay{" +
                 "id_day=" + id_day +
                 ", name='" + name + '\'' +
                 '}';

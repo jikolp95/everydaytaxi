@@ -1,3 +1,8 @@
+package models;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -7,16 +12,17 @@ import java.util.Date;
  * Created by yeldos on 10/19/17.
  */
 @Entity
-public class Orders {
+public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_order;
+    private int id_booking;
     private String title;
     @Temporal(TemporalType.DATE)
     private Date date_from;
     @Temporal(TemporalType.DATE)
     private Date date_until;
-    @OneToMany (mappedBy = "orders", cascade =CascadeType.PERSIST)
+    @OneToMany (fetch = FetchType.EAGER, mappedBy = "booking", cascade =CascadeType.PERSIST)
+    @Fetch(value = FetchMode.SUBSELECT)
     private Collection<WeekDay> specific_day = new ArrayList<WeekDay>();
     private long point_a;
     private long point_b;
@@ -26,21 +32,21 @@ public class Orders {
     @Temporal(TemporalType.TIME)
     private Date return_time;
     private String taxi_class;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "id_taxi")
     private Taxi taxi;
-    @OneToOne
+    @OneToOne (cascade = CascadeType.PERSIST)
     @JoinColumn(name = "id_city")
     private City city;
     private String comment;
-//    @ManyToOne
-//    @JoinColumn(name = "id_user")
-//    private User user;
+    @ManyToOne
+    @JoinColumn(name = "id_user")
+    private User user;
 
-    public Orders() {
+    public Booking() {
     }
 
-    public Orders(String title, Date date_from, Date date_until, Collection<WeekDay> specific_day, long point_a, long point_b, int round_trip, Date feed_time, Date return_time, String taxi_class, Taxi taxi, City city, String comment) {
+    public Booking(String title, Date date_from, Date date_until, Collection<WeekDay> specific_day, long point_a, long point_b, int round_trip, Date feed_time, Date return_time, String taxi_class, Taxi taxi, City city, String comment) {
         this.title = title;
         this.date_from = date_from;
         this.date_until = date_until;
@@ -56,12 +62,12 @@ public class Orders {
         this.comment = comment;
     }
 
-    public int getId_order() {
-        return id_order;
+    public int getId_booking() {
+        return id_booking;
     }
 
-    public void setId_order(int id_order) {
-        this.id_order = id_order;
+    public void setId_booking(int id_booking) {
+        this.id_booking = id_booking;
     }
 
     public String getTitle() {
@@ -168,18 +174,18 @@ public class Orders {
         this.comment = comment;
     }
 
-//    public User getUser() {
-//        return user;
-//    }
-//
-//    public void setUser(User user) {
-//        this.user = user;
-//    }
+    public models.User getUser() {
+        return user;
+    }
+
+    public void setUser(models.User user) {
+        this.user = user;
+    }
 
     @Override
     public String toString() {
-        return "Orders{" +
-                "id_order=" + id_order +
+        return "Booking{" +
+                "id_booking=" + id_booking +
                 ", title='" + title + '\'' +
                 ", date_from=" + date_from +
                 ", date_until=" + date_until +

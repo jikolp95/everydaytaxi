@@ -1,3 +1,5 @@
+package models;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -57,7 +59,7 @@ public class City {
 
     @Override
     public String toString() {
-        return "City{" +
+        return "models.City{" +
                 "id_city=" + id_city +
                 ", city_name='" + city_name + '\'' +
                 ", lat=" + lat +
