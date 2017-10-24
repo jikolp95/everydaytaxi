@@ -1,4 +1,4 @@
-package models;
+package com.everydaytaxi.models;
 
 import javax.persistence.*;
 
@@ -48,7 +48,7 @@ public class WeekDay {
 
     @Override
     public String toString() {
-        return "models.WeekDay{" +
+        return "com.everydaytaxi.models.WeekDay{" +
                 "id_day=" + id_day +
                 ", name='" + name + '\'' +
                 '}';

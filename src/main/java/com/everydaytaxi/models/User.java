@@ -1,4 +1,4 @@
-package models;
+package com.everydaytaxi.models;
 
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
@@ -88,7 +88,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "models.User{" +
+        return "com.everydaytaxi.models.User{" +
                 "id_user=" + id_user +
                 ", phone_number='" + phone_number + '\'' +
                 ", password='" + password + '\'' +

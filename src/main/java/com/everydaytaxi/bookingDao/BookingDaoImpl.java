@@ -1,4 +1,4 @@
-package bookingDao;
+package com.everydaytaxi.bookingDao;
 
 
 /**

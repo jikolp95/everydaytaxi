@@ -1,4 +1,4 @@
-package models;
+package com.everydaytaxi.models;
 
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
@@ -174,11 +174,11 @@ public class Booking {
         this.comment = comment;
     }
 
-    public models.User getUser() {
+    public User getUser() {
         return user;
     }
 
-    public void setUser(models.User user) {
+    public void setUser(User user) {
         this.user = user;
     }
 

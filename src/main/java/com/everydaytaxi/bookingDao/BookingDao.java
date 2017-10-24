@@ -1,7 +1,6 @@
-package bookingDao;
+package com.everydaytaxi.bookingDao;
 
-import models.Booking;
-import models.User;
+import com.everydaytaxi.models.Booking;
 
 import java.util.List;
 

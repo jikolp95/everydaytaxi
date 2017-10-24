@@ -1,5 +1,7 @@
-import bookingDao.BookingDao;
-import models.*;
+package com.everydaytaxi;
+
+import com.everydaytaxi.bookingDao.BookingDao;
+import com.everydaytaxi.models.*;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -37,6 +39,10 @@ public class HibernateTest implements BookingDao {
                 0, new Date(),
                 new Date(), "lux", taxi1, astana, "update booking"
         );
+        Booking booking2 = new Booking("for youngandwild", new Date(), new Date(), Arrays.asList(monday, wednesday, friday), 1, 2,
+                0, new Date(),
+                new Date(), "lux", taxi, almaty, "added booking"
+        );
 
 
         monday.setBooking(booking1);
@@ -55,14 +61,17 @@ public class HibernateTest implements BookingDao {
 //        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
 //        Session session = sessionFactory.openSession();
 //        session.beginTransaction();
+//        session.persist(user);
 //        session.persist(user1);
 //        session.getTransaction().commit();
 //        session.close();
+
+
 //        changeBooking(booking1);
 
 
 //        ----------GET BOOKING LIST
-//        List<Booking> bookingList = new HibernateTest().getBookingList(1);
+//        List<Booking> bookingList = new com.everydaytaxi.HibernateTest().getBookingList(1);
 //        System.out.println(bookingList.size());
 //        for (Booking booking : bookingList) {
 //            System.out.println(booking.toString());
@@ -70,28 +79,18 @@ public class HibernateTest implements BookingDao {
 
 
 //        ----------GET BOOKING
-//        Booking booking2 = new HibernateTest().getBooking(1, 1);
+//        Booking booking2 = new com.everydaytaxi.HibernateTest().getBooking(1, 1);
 //        if (booking2 != null) {
 //            System.out.println(booking2.toString());
 //        } else {
 //            System.out.println("does not find this object");
 //        }
 //        ----------DELETE BOOKING
-        new HibernateTest().deleteBooking(1,1);
+//        new com.everydaytaxi.HibernateTest().deleteBooking(1,1);
 
-    }
+//        ----------ADD BOOKING
+//        new HibernateTest().addBooking(1,booking2);
 
-
-    static void changeBooking(Booking booking) {
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
-        Session session = sessionFactory.openSession();
-        session.beginTransaction();
-        booking.setId_booking(1);
-        Booking booking1 = session.load(Booking.class, booking.getId_booking());
-        booking1 = booking;
-        session.update(booking1);
-        session.getTransaction().commit();
-        session.close();
     }
 
     public void changeBooking(int userId, Booking booking) {
@@ -127,7 +126,11 @@ public class HibernateTest implements BookingDao {
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        session.persist(booking);
+        User user = session.get(User.class, userId);
+        booking.setUser(user);
+        Taxi taxi =session.get(Taxi.class,1);
+        booking.setTaxi(taxi);
+        session.save(booking);
         session.getTransaction().commit();
         session.close();
     }

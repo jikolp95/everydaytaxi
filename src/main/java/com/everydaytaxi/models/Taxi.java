@@ -1,4 +1,4 @@
-package models;
+package com.everydaytaxi.models;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -89,7 +89,7 @@ public class Taxi {
 
     @Override
     public String toString() {
-        return "models.Taxi{" +
+        return "com.everydaytaxi.models.Taxi{" +
                 "id_taxi=" + id_taxi +
                 ", taxi_class='" + taxi_class + '\'' +
                 ", car_number='" + car_number + '\'' +
