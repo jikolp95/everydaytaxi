@@ -1,8 +1,5 @@
 package com.everydaytaxi.models;
 
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -21,8 +18,7 @@ public class User {
     @OneToOne (cascade = CascadeType.PERSIST)
     @JoinColumn(name = "id_city")
     private City city;
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user",cascade = CascadeType.PERSIST)
-    @Fetch(value = FetchMode.SUBSELECT)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     private Collection<Booking> bookings = new ArrayList<Booking>();
 
     public User() {

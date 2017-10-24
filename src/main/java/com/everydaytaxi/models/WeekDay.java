@@ -11,9 +11,6 @@ public class WeekDay {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_day;
     private String name;
-    @ManyToOne
-    @JoinColumn(name = "id_booking")
-    private Booking booking;
 
     public WeekDay() {
     }
@@ -36,21 +33,5 @@ public class WeekDay {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Booking getBooking() {
-        return booking;
-    }
-
-    public void setBooking(Booking booking) {
-        this.booking = booking;
-    }
-
-    @Override
-    public String toString() {
-        return "com.everydaytaxi.models.WeekDay{" +
-                "id_day=" + id_day +
-                ", name='" + name + '\'' +
-                '}';
     }
 }

@@ -21,8 +21,7 @@ public class Booking {
     private Date date_from;
     @Temporal(TemporalType.DATE)
     private Date date_until;
-    @OneToMany (fetch = FetchType.EAGER, mappedBy = "booking", cascade =CascadeType.PERSIST)
-    @Fetch(value = FetchMode.SUBSELECT)
+    @OneToMany (fetch = FetchType.EAGER, cascade =CascadeType.PERSIST)
     private Collection<WeekDay> specific_day = new ArrayList<WeekDay>();
     private long point_a;
     private long point_b;
@@ -39,9 +38,6 @@ public class Booking {
     @JoinColumn(name = "id_city")
     private City city;
     private String comment;
-    @ManyToOne
-    @JoinColumn(name = "id_user")
-    private User user;
 
     public Booking() {
     }
@@ -174,31 +170,4 @@ public class Booking {
         this.comment = comment;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    @Override
-    public String toString() {
-        return "Booking{" +
-                "id_booking=" + id_booking +
-                ", title='" + title + '\'' +
-                ", date_from=" + date_from +
-                ", date_until=" + date_until +
-                ", specific_day=" + specific_day +
-                ", point_a=" + point_a +
-                ", point_b=" + point_b +
-                ", round_trip=" + round_trip +
-                ", feed_time=" + feed_time +
-                ", return_time=" + return_time +
-                ", taxi_class='" + taxi_class + '\'' +
-                ", taxi=" + taxi +
-                ", city=" + city +
-                ", comment='" + comment + '\'' +
-                '}';
-    }
 }

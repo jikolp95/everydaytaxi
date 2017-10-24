@@ -57,13 +57,4 @@ public class City {
         this.lon = lon;
     }
 
-    @Override
-    public String toString() {
-        return "com.everydaytaxi.models.City{" +
-                "id_city=" + id_city +
-                ", city_name='" + city_name + '\'' +
-                ", lat=" + lat +
-                ", lon=" + lon +
-                '}';
-    }
 }

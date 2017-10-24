@@ -45,18 +45,18 @@ public class HibernateTest implements BookingDao {
         );
 
 
-        monday.setBooking(booking1);
-        wednesday.setBooking(booking1);
-        friday.setBooking(booking1);
-        thuesday.setBooking(booking);
-        tuesday.setBooking(booking);
-        saturday.setBooking(booking);
+//        monday.setBooking(booking1);
+//        wednesday.setBooking(booking1);
+//        friday.setBooking(booking1);
+//        thuesday.setBooking(booking);
+//        tuesday.setBooking(booking);
+//        saturday.setBooking(booking);
 
 
         User user = new User("87782480303", "qwer12", "root", almaty, Arrays.asList(booking1));
         User user1 = new User("87019205111", "qwer12", "root", astana, Arrays.asList(booking));
-        booking1.setUser(user);
-        booking.setUser(user1);
+//        booking1.setUser(user);
+//        booking.setUser(user1);
 
 //        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
 //        Session session = sessionFactory.openSession();
@@ -98,45 +98,49 @@ public class HibernateTest implements BookingDao {
     }
 
     public Booking getBooking(int userId, int id) {
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        Criteria criteria = session.createCriteria(Booking.class);
-        criteria.add(Restrictions.eq("user.id_user", userId))
-                .add(Restrictions.eq("id_booking", id));
-        criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
-        Booking booking = (Booking) criteria.uniqueResult();
-        return booking;
+        User user = session.get(User.class, userId);
+        if (user != null) {
+            List<Booking> bookingList = (List<Booking>) user.getBookings();
+            if (!bookingList.isEmpty()) {
+                for (Booking booking :
+                        bookingList) {
+                    if (booking.getId_booking() == id) {
+                        return booking;
+                    }
+                }
+            }
+
+        }
+        return null;
     }
 
     public List<Booking> getBookingList(int userId) {
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        Criteria criteria = session.createCriteria(Booking.class);
-        criteria.add(Restrictions.eq("user.id_user", userId));
-        criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
-        List<Booking> bookingList = (List<Booking>) criteria.list();
+        User user = session.get(User.class, userId);
+        List<Booking> bookingList = (List<Booking>) user.getBookings();
         session.getTransaction().commit();
         session.close();
         return bookingList;
     }
 
     public void addBooking(int userId, Booking booking) {
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         User user = session.get(User.class, userId);
-        booking.setUser(user);
-        Taxi taxi =session.get(Taxi.class,1);
-        booking.setTaxi(taxi);
-        session.save(booking);
+        user.getBookings().add(booking);
         session.getTransaction().commit();
         session.close();
     }
 
     public void deleteBooking(int userId, int bookingId) {
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         Booking booking = session.get(Booking.class, bookingId);
