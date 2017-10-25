@@ -1,233 +1,239 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="hibernatedb@localhost">
-  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.4">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.1">
     <root id="1"/>
     <schema id="2" parent="1" name="hibernatedb">
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
-    <schema id="3" parent="1" name="information_schema"/>
-    <schema id="4" parent="1" name="mysql"/>
-    <schema id="5" parent="1" name="performance_schema"/>
-    <schema id="6" parent="1" name="sys"/>
-    <table id="7" parent="2" name="booking"/>
-    <table id="8" parent="2" name="booking_weekday"/>
-    <table id="9" parent="2" name="city"/>
-    <table id="10" parent="2" name="taxi"/>
-    <table id="11" parent="2" name="user"/>
-    <table id="12" parent="2" name="user_booking"/>
-    <table id="13" parent="2" name="weekday"/>
-    <column id="14" parent="7" name="id_booking">
+    <schema id="3" parent="1" name="bookmanager"/>
+    <schema id="4" parent="1" name="ClinicaDB"/>
+    <schema id="5" parent="1" name="everydaytaxi"/>
+    <schema id="6" parent="1" name="information_schema"/>
+    <schema id="7" parent="1" name="mysql"/>
+    <schema id="8" parent="1" name="performance_schema"/>
+    <schema id="9" parent="1" name="springlibrary"/>
+    <schema id="10" parent="1" name="spring_library"/>
+    <schema id="11" parent="1" name="sys"/>
+    <schema id="12" parent="1" name="test"/>
+    <table id="13" parent="2" name="Booking"/>
+    <table id="14" parent="2" name="Booking_WeekDay"/>
+    <table id="15" parent="2" name="City"/>
+    <table id="16" parent="2" name="Taxi"/>
+    <table id="17" parent="2" name="User"/>
+    <table id="18" parent="2" name="User_Booking"/>
+    <table id="19" parent="2" name="WeekDay"/>
+    <column id="20" parent="13" name="id_booking">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="15" parent="7" name="comment">
+    <column id="21" parent="13" name="comment">
       <Position>2</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="16" parent="7" name="date_from">
+    <column id="22" parent="13" name="date_from">
       <Position>3</Position>
       <DataType>date|0</DataType>
     </column>
-    <column id="17" parent="7" name="date_until">
+    <column id="23" parent="13" name="date_until">
       <Position>4</Position>
       <DataType>date|0</DataType>
     </column>
-    <column id="18" parent="7" name="feed_time">
+    <column id="24" parent="13" name="feed_time">
       <Position>5</Position>
       <DataType>time|0</DataType>
     </column>
-    <column id="19" parent="7" name="point_a">
+    <column id="25" parent="13" name="point_a">
       <Position>6</Position>
       <DataType>bigint(20)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="20" parent="7" name="point_b">
+    <column id="26" parent="13" name="point_b">
       <Position>7</Position>
       <DataType>bigint(20)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="21" parent="7" name="return_time">
+    <column id="27" parent="13" name="return_time">
       <Position>8</Position>
       <DataType>time|0</DataType>
     </column>
-    <column id="22" parent="7" name="round_trip">
+    <column id="28" parent="13" name="round_trip">
       <Position>9</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="23" parent="7" name="taxi_class">
+    <column id="29" parent="13" name="taxi_class">
       <Position>10</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="24" parent="7" name="title">
+    <column id="30" parent="13" name="title">
       <Position>11</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="25" parent="7" name="id_city">
+    <column id="31" parent="13" name="id_city">
       <Position>12</Position>
       <DataType>int(11)|0</DataType>
     </column>
-    <column id="26" parent="7" name="id_taxi">
+    <column id="32" parent="13" name="id_taxi">
       <Position>13</Position>
       <DataType>int(11)|0</DataType>
     </column>
-    <index id="27" parent="7" name="FK3ja5s7fynvgmofvn40hmkqghs">
+    <index id="33" parent="13" name="FK3ja5s7fynvgmofvn40hmkqghs">
       <ColNames>id_city</ColNames>
     </index>
-    <index id="28" parent="7" name="FKtn92cmhi30v7o56iv4jb2indp">
+    <index id="34" parent="13" name="FKtn92cmhi30v7o56iv4jb2indp">
       <ColNames>id_taxi</ColNames>
     </index>
-    <key id="29" parent="7" name="PRIMARY">
+    <key id="35" parent="13" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id_booking</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="30" parent="8" name="Booking_id_booking">
+    <column id="36" parent="14" name="Booking_id_booking">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="31" parent="8" name="specific_day_id_day">
+    <column id="37" parent="14" name="specific_day_id_day">
       <Position>2</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="32" parent="8" name="FK35sm0xp7611ojmyo12nglffna">
+    <index id="38" parent="14" name="FK35sm0xp7611ojmyo12nglffna">
       <ColNames>Booking_id_booking</ColNames>
     </index>
-    <index id="33" parent="8" name="UK_9g9tyrr54yotestdhykaoeiig">
+    <index id="39" parent="14" name="UK_9g9tyrr54yotestdhykaoeiig">
       <ColNames>specific_day_id_day</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="34" parent="8" name="UK_9g9tyrr54yotestdhykaoeiig">
+    <key id="40" parent="14" name="UK_9g9tyrr54yotestdhykaoeiig">
       <ColNames>specific_day_id_day</ColNames>
       <UnderlyingIndexName>UK_9g9tyrr54yotestdhykaoeiig</UnderlyingIndexName>
     </key>
-    <column id="35" parent="9" name="id_city">
+    <column id="41" parent="15" name="id_city">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="36" parent="9" name="city_name">
+    <column id="42" parent="15" name="city_name">
       <Position>2</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="37" parent="9" name="lat">
+    <column id="43" parent="15" name="lat">
       <Position>3</Position>
       <DataType>bigint(20)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="38" parent="9" name="lon">
+    <column id="44" parent="15" name="lon">
       <Position>4</Position>
       <DataType>bigint(20)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="39" parent="9" name="PRIMARY">
+    <key id="45" parent="15" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id_city</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="40" parent="10" name="id_taxi">
+    <column id="46" parent="16" name="id_taxi">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="41" parent="10" name="birthday">
+    <column id="47" parent="16" name="birthday">
       <Position>2</Position>
       <DataType>date|0</DataType>
     </column>
-    <column id="42" parent="10" name="car_number">
+    <column id="48" parent="16" name="car_number">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="43" parent="10" name="living_address">
+    <column id="49" parent="16" name="living_address">
       <Position>4</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="44" parent="10" name="name">
+    <column id="50" parent="16" name="name">
       <Position>5</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="45" parent="10" name="surname">
+    <column id="51" parent="16" name="surname">
       <Position>6</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="46" parent="10" name="taxi_class">
+    <column id="52" parent="16" name="taxi_class">
       <Position>7</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <key id="47" parent="10" name="PRIMARY">
+    <key id="53" parent="16" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id_taxi</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="48" parent="11" name="id_user">
+    <column id="54" parent="17" name="id_user">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="49" parent="11" name="password">
+    <column id="55" parent="17" name="password">
       <Position>2</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="50" parent="11" name="phone_number">
+    <column id="56" parent="17" name="phone_number">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="51" parent="11" name="username">
+    <column id="57" parent="17" name="username">
       <Position>4</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="52" parent="11" name="id_city">
+    <column id="58" parent="17" name="id_city">
       <Position>5</Position>
       <DataType>int(11)|0</DataType>
     </column>
-    <index id="53" parent="11" name="FKbstyj90upvojax3838rnhrllm">
+    <index id="59" parent="17" name="FKbstyj90upvojax3838rnhrllm">
       <ColNames>id_city</ColNames>
     </index>
-    <key id="54" parent="11" name="PRIMARY">
+    <key id="60" parent="17" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id_user</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="55" parent="12" name="User_id_user">
+    <column id="61" parent="18" name="User_id_user">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="56" parent="12" name="bookings_id_booking">
+    <column id="62" parent="18" name="bookings_id_booking">
       <Position>2</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="57" parent="12" name="FK5vqa097a08k1g3a78hmlp3v2l">
+    <index id="63" parent="18" name="FK5vqa097a08k1g3a78hmlp3v2l">
       <ColNames>User_id_user</ColNames>
     </index>
-    <index id="58" parent="12" name="UK_kgy34btxsw5d2vv8oobxgod91">
+    <index id="64" parent="18" name="UK_kgy34btxsw5d2vv8oobxgod91">
       <ColNames>bookings_id_booking</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="59" parent="12" name="UK_kgy34btxsw5d2vv8oobxgod91">
+    <key id="65" parent="18" name="UK_kgy34btxsw5d2vv8oobxgod91">
       <ColNames>bookings_id_booking</ColNames>
       <UnderlyingIndexName>UK_kgy34btxsw5d2vv8oobxgod91</UnderlyingIndexName>
     </key>
-    <column id="60" parent="13" name="id_day">
+    <column id="66" parent="19" name="id_day">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="61" parent="13" name="name">
+    <column id="67" parent="19" name="name">
       <Position>2</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <key id="62" parent="13" name="PRIMARY">
+    <key id="68" parent="19" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id_day</ColNames>
       <Primary>1</Primary>

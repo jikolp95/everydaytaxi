@@ -128,14 +128,19 @@ public class HibernateTest implements BookingDao {
         return bookingList;
     }
 
-    public void addBooking(int userId, Booking booking) {
+    public String addBooking(int userId, Booking booking) {
+        String response = "failure";
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         User user = session.get(User.class, userId);
-        user.getBookings().add(booking);
+        if (user != null) {
+            user.getBookings().add(booking);
+            response = "ok";
+        }
         session.getTransaction().commit();
         session.close();
+        return response;
     }
 
     public void deleteBooking(int userId, int bookingId) {
