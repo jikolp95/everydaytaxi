@@ -1,5 +1,9 @@
 package com.everydaytaxi.models;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import javax.ws.rs.FormParam;
 import java.util.ArrayList;
@@ -14,40 +18,28 @@ public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_booking;
-    @FormParam("title")  //Jersey annotation
     private String title;
     @Temporal(TemporalType.DATE)
-    @FormParam("date_from")  //Jersey annotation
     private Date date_from;
     @Temporal(TemporalType.DATE)
-    @FormParam("date_until")  //Jersey annotation
     private Date date_until;
-    @OneToMany (fetch = FetchType.EAGER, cascade =CascadeType.PERSIST)
-    @FormParam("specific_day")  //Jersey annotation
+    @ManyToMany (fetch = FetchType.EAGER, cascade =CascadeType.ALL)
+    @Fetch(FetchMode.SELECT)
     private Collection<WeekDay> specific_day = new ArrayList<WeekDay>();
-    @FormParam("point_a")  //Jersey annotation
     private long point_a;
-    @FormParam("point_b")  //Jersey annotation
     private long point_b;
-    @FormParam("round_trip")  //Jersey annotation
     private int round_trip;
     @Temporal(TemporalType.TIME)
-    @FormParam("feed_time")  //Jersey annotation
     private Date feed_time;
     @Temporal(TemporalType.TIME)
-    @FormParam("return_time")  //Jersey annotation
     private Date return_time;
-    @FormParam("taxi_class")  //Jersey annotation
     private String taxi_class;
-    @OneToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_taxi")
-    @FormParam("taxi")  //Jersey annotation
     private Taxi taxi;
-    @OneToOne (cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_city")
-    @FormParam("city")  //Jersey annotation
     private City city;
-    @FormParam("comment")
     private String comment;
 
     public Booking() {
@@ -181,4 +173,23 @@ public class Booking {
         this.comment = comment;
     }
 
+    @Override
+    public String toString() {
+        return "Booking{" +
+                "id_booking=" + id_booking +
+                ", title='" + title + '\'' +
+                ", date_from=" + date_from +
+                ", date_until=" + date_until +
+                ", specific_day=" + specific_day +
+                ", point_a=" + point_a +
+                ", point_b=" + point_b +
+                ", round_trip=" + round_trip +
+                ", feed_time=" + feed_time +
+                ", return_time=" + return_time +
+                ", taxi_class='" + taxi_class + '\'' +
+                ", taxi=" + taxi +
+                ", city=" + city +
+                ", comment='" + comment + '\'' +
+                '}';
+    }
 }

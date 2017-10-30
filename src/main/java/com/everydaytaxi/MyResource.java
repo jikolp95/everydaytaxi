@@ -38,12 +38,32 @@ public class MyResource {
     }
 
     @POST
-    @Path("/{userId}/addbooking")
+    @Path("/addbooking/{userId}")
     @Produces(MediaType.TEXT_PLAIN)
-    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    public String addBooking(@PathParam("userId") int userId, @BeanParam Booking booking) {
-        System.out.println(new Genson().serialize(booking));
-//        new HibernateTest().addBooking(userId, booking);
+    @Consumes(MediaType.APPLICATION_JSON)
+    public String addBooking(@PathParam("userId") int userId, String booking) {
+        Booking booking1 = new Genson().deserialize(booking, Booking.class);
+        new HibernateTest().addBooking(userId, booking1);
         return "ok";
     }
+
+
+    @POST
+    @Path("/updatebooking")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.TEXT_PLAIN)
+    public String updateBooking(String booking) {
+        Booking booking1 = new Genson().deserialize(booking, Booking.class);
+        new HibernateTest().updateBooking(booking1);
+        return "ok";
+    }
+    @POST
+    @Path("/deletebooking/{userId}/{bookingId}")
+    @Produces(MediaType.TEXT_PLAIN)
+    public String deleteBooking(@PathParam("userId") int userId,@PathParam("bookingId") int bookingId) {
+        new HibernateTest().deleteBooking(userId, bookingId);
+        return "ok";
+    }
+
+
 }

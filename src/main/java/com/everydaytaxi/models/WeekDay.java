@@ -1,6 +1,11 @@
 package com.everydaytaxi.models;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  * Created by yeldos on 10/19/17.
@@ -33,5 +38,13 @@ public class WeekDay {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "WeekDay{" +
+                "id_day=" + id_day +
+                ", name='" + name + '\'' +
+                '}';
     }
 }

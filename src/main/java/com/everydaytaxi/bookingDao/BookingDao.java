@@ -8,7 +8,7 @@ import java.util.List;
  * Created by yeldos on 10/23/17.
  */
 public interface BookingDao {
-    void changeBooking(int userId, Booking booking);
+    void updateBooking( Booking booking);
 
     Booking getBooking(int userId, int id);
 

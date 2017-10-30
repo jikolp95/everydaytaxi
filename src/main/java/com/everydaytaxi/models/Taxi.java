@@ -86,4 +86,17 @@ public class Taxi {
     public void setLiving_address(String living_address) {
         this.living_address = living_address;
     }
+
+    @Override
+    public String toString() {
+        return "Taxi{" +
+                "id_taxi=" + id_taxi +
+                ", taxi_class='" + taxi_class + '\'' +
+                ", car_number='" + car_number + '\'' +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", birthday=" + birthday +
+                ", living_address='" + living_address + '\'' +
+                '}';
+    }
 }

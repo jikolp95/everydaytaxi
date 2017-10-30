@@ -1,5 +1,8 @@
 package com.everydaytaxi.models;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -15,10 +18,11 @@ public class User {
     private String phone_number;
     private String password;
     private String username;
-    @OneToOne (cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_city")
     private City city;
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @Fetch(FetchMode.SELECT)
     private Collection<Booking> bookings = new ArrayList<Booking>();
 
     public User() {
@@ -80,11 +84,9 @@ public class User {
         this.bookings = bookings;
     }
 
-
-
     @Override
     public String toString() {
-        return "com.everydaytaxi.models.User{" +
+        return "User{" +
                 "id_user=" + id_user +
                 ", phone_number='" + phone_number + '\'' +
                 ", password='" + password + '\'' +
