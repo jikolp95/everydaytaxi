@@ -5,17 +5,29 @@
 <hibernate-configuration>
     <session-factory>
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://localhost:3306/hibernatedb</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/gutstore</property>
         <property name="connection.username">root</property>
         <property name="connection.password">qwer12</property>
         <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
+        <property name="connection.characterEncoding">UTF-8</property>
         <property name="connection.pool_size">1</property>
         <property name="show_sql">true</property>
         <property name="hbm2ddl.auto">update</property>
-        <mapping class="com.everydaytaxi.models.City"/>
-        <mapping class="com.everydaytaxi.models.Booking"/>
-        <mapping class="com.everydaytaxi.models.Taxi"/>
-        <mapping class="com.everydaytaxi.models.User"/>
-        <mapping class="com.everydaytaxi.models.WeekDay"/>
+        <!--<mapping class="com.everydaytaxi.models.City"/>-->
+        <!--<mapping class="com.everydaytaxi.models.Booking"/>-->
+        <!--<mapping class="com.everydaytaxi.models.Taxi"/>-->
+        <!--<mapping class="com.everydaytaxi.models.User"/>-->
+        <!--<mapping class="com.everydaytaxi.models.WeekDay"/>-->
+        <mapping class="com.gutstore.model.productFeature.Brand"/>
+        <mapping class="com.gutstore.model.productFeature.Color"/>
+        <mapping class="com.gutstore.model.productFeature.Country"/>
+        <mapping class="com.gutstore.model.productFeature.Gender"/>
+        <mapping class="com.gutstore.model.productFeature.Material"/>
+        <mapping class="com.gutstore.model.Shoes"/>
+        <mapping class="com.gutstore.model.productFeature.ShoesType"/>
+        <mapping class="com.gutstore.model.productFeature.Season"/>
+        <mapping class="com.gutstore.model.productFeature.Size"/>
+        <mapping class="com.gutstore.model.productFeature.Style"/>
+
     </session-factory>
 </hibernate-configuration>

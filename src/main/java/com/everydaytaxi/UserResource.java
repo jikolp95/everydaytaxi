@@ -1,10 +1,7 @@
 package com.everydaytaxi;
 
-import com.everydaytaxi.bookingDao.BookingDaoImpl;
 import com.everydaytaxi.models.User;
-import com.everydaytaxi.userDao.UserDao;
 import com.everydaytaxi.userDao.UserDaoImpl;
-import com.everydaytaxi.utils.HibernateUtil;
 import com.owlike.genson.Genson;
 
 import javax.ws.rs.GET;
